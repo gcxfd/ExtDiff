@@ -20,7 +20,7 @@ if ($baseFile.IsReadOnly) {
 }
 
 # Constants
-$wdDoNotSaveChanges = 0
+$wdSaveChanges = -1
 $wdCompareTargetNew = 2
 
 try {
@@ -32,7 +32,7 @@ try {
     $word.ActiveDocument.Saved = 1
 
     # Now close the document so only compare results window persists:
-    $document.Close([ref]$wdDoNotSaveChanges)
+    $document.Close([ref]$wdSaveChanges)
 } catch {
     Add-Type -AssemblyName System.Windows.Forms
     [System.Windows.Forms.MessageBox]::Show($_.Exception)
